@@ -1,5 +1,6 @@
 import icook_query
 import logging
+import os
 from aiohttp import web
 
 logger = logging.getLogger(__name__)
@@ -14,4 +15,4 @@ async def handle(request):
 app = web.Application()
 app.add_routes([web.get('/icook_query', handle)])
 
-web.run_app(app)
+web.run_app(app, port=os.getenv('PORT', 5000))
